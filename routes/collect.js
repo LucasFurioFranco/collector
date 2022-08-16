@@ -1,6 +1,6 @@
 const router = require("express").Router()
 
-router.get("/", (req, res) => {
+function requestLogger(req, res) {
   var data = {
     params: req.params,
     body: req.body,
@@ -11,12 +11,13 @@ router.get("/", (req, res) => {
   };
 
   console.log(data);
+  
   res.status(200).json(data);
-})
+}
 
 
-router.post("/", (req, res) => {
-  res.status(200).json({});
-})
+router.get("/", (req, res) => requestLogger)
+
+router.post("/", (req, res) => requestLogger)
 
 module.exports = router
