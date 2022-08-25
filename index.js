@@ -25,6 +25,11 @@ app.use(express.json())
 
 app.use("/collect", require("./routes/collect"))
 
+//KeepAlive
+app.get("/keepalive", (req, res) => {
+  res.status(200).json({status: "this route does not exist"})
+})
+
 //Wildcard
 app.get("*", (req, res) => {
   res.status(404).json({error: "this route does not exist"})
@@ -36,9 +41,9 @@ const PORT = process.env.PORT || 3002;
 
 app.listen(PORT, () => {
   setInterval(() => {
-    axios.get("https://wc-collector.herokuapp.com/collect?t=keep-alive")
+    axios.get("https://wc-collector.herokuapp.com/keepalive?t=keep-alive")
 
-  }, 1*60*1000)
+  }, 29*60*1000)
 
   console.log("Server Running");
 })
