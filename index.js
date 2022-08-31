@@ -43,7 +43,7 @@ app.listen(PORT, () => {
   setInterval(() => {
     axios.get("https://wc-collector.herokuapp.com/keepalive?t=keep-alive")
 
-  }, 29*60*1000)
+  }, 25*60*1000)
 
   console.log("Server Running");
 })
